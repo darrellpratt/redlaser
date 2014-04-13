@@ -34,14 +34,20 @@ exports.findByUPCLatLon = function(upc,lat,lon) {
     return this.findByUPCLatLonDist(upc,lat,lon,10);
 };
 
-exports.findByUPCLatLonDist = function(upc,lat,lon,dist) {
+exports.findByUPCLatLonDist = function(upc,lat,lon,dist,cb) {
   var geo = new GeoLocation(41.8748562,-87.6352741);
   var upcMock = 73410591;
   console.log(JSON.stringify(geo));
   var bbox = geo.boundingBox(dist);
   // use this on the view to couchbase
   console.log(bbox);
-  var results = queryREST(bbox);
+  request(couchbaseRestHost + couchbaseViewHttp + bbox, function(error, response, body) {
+  // request('http://127.0.0.1:8092/redlaser/_design/store-ref/_spatial/storeGeoView?bbox=-87.75605237002348,41.78492418056654,-87.5144958299765,41.96478821943347', function(error, response, body) {
+    // console.log(body);
+    // console.log(response);
+    // console.log(body);
+    console.log('in request');
+    cb(body);
+  });
 
-  return results;
 };
