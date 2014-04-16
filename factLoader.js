@@ -70,7 +70,7 @@ if (op === 'parse') {
       obj.type = ref.typeKey;
 
       if (ref.typeKey === 'sales_fact') {
-        var key = obj.pod_id + "_" + obj.prdc_key + "_" + obj.prd_id;
+        var key = obj.pod_id + "_" + obj.prdc_key + "_" + obj.prd_id + "_" + new Date().getTime();
         obj.price = obj.dol/obj.units;
         if (isNaN(obj.price)) {obj.price = 0;}
       } else {

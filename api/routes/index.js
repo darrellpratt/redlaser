@@ -1,4 +1,5 @@
 var express = require('express');
+var _ = require('underscore');
 var router = express.Router();
 var geo = require('./geo');
 var JSON = require('JSON');
@@ -20,7 +21,15 @@ router.get('/api/v1/prod/:id/lat/:lat/lon/:lon/dist/:dist', function(req, res) {
       // console.log('results - index.js');
       // console.log(body);
       // console.log('before return');
-      res.json(JSON.parse(body));
+      // var result = JSON.parse(body);
+      // _.each(result.rows, function(i) {
+      //   // console.log(i.id);
+      // })
+      // if (result.rows) {
+      //   console.log(result.rows.length);
+      // }
+      // res.json(JSON.parse(body));
+      res.json('hello world');
   });
 
 });

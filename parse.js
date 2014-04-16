@@ -10,34 +10,34 @@ var jsonToStrings = JSONStream.stringify();
 var couchbase = require('couchbase');
 var db = new couchbase.Connection({host: 'localhost:8091', bucket: 'redlaser'});
 
-var test = '{"pod_id":"4412134","lrtacode":"MEJTL","ltraname":"MEIJER TOTAL CENSUS TRADING AREA","sorgcd":"MEJ","spsuedocd":"165614","sname":"Meijer Supermarket","sstreetadd":"7157 E Saginaw St","scity":"East Lansing","sst":"MI","szip":"48823","sareacd":"517","sphoneno":"8859000","slat":42.7706,"slong":-84.4191,"sformatcd":"Grocery - Supercenter","mmgbmktnm":"Grand Rapids","sno":"00253"},{"pod_id":"4566680","lrtacode":"DORTL","ltraname":"DOLLAR GENERAL TOTAL CENSUS TA","sorgcd":"DOL","spsuedocd":"184180","sname":"Dollar General","sstreetadd":"3520 W Main St","scity":"Cabot","sst":"AR","szip":"72023","sareacd":"NOT APPLICABLE","sphoneno":"NOT APPLICABLE","slat":"34.9835","slong":"-92.0595","sformatcd":"Mass Merch - Dollar Store","mmgbmktnm":"Memphis","sno":"14550"}';
+// var test = '{"pod_id":"4412134","lrtacode":"MEJTL","ltraname":"MEIJER TOTAL CENSUS TRADING AREA","sorgcd":"MEJ","spsuedocd":"165614","sname":"Meijer Supermarket","sstreetadd":"7157 E Saginaw St","scity":"East Lansing","sst":"MI","szip":"48823","sareacd":"517","sphoneno":"8859000","slat":42.7706,"slong":-84.4191,"sformatcd":"Grocery - Supercenter","mmgbmktnm":"Grand Rapids","sno":"00253"},{"pod_id":"4566680","lrtacode":"DORTL","ltraname":"DOLLAR GENERAL TOTAL CENSUS TA","sorgcd":"DOL","spsuedocd":"184180","sname":"Dollar General","sstreetadd":"3520 W Main St","scity":"Cabot","sst":"AR","szip":"72023","sareacd":"NOT APPLICABLE","sphoneno":"NOT APPLICABLE","slat":"34.9835","slong":"-92.0595","sformatcd":"Mass Merch - Dollar Store","mmgbmktnm":"Memphis","sno":"14550"}';
 //test.replace(/\"([-+]?\d*[.]?\d+)\"/g,"$1")
 
 // store ref
 var storeRef = {
-  "srcFile": "./mp_str_ref.txt.bak",
-  "jsonFile": "./mp_str_ref.json",
+  "srcFile": "./data/mp_str_ref.txt.bak",
+  "jsonFile": "./data/mp_str_ref.json",
   "typeKey": "store_ref",
   "idKey": "pod_id"
 };
 
 // sales fact
 var salesFact = {
-  "srcFile": "./mp_EXTRACT.txt.bak",
-  "jsonFile": "./mp_EXTRACT.json",
+  "srcFile": "./data/mp_EXTRACT.txt.bak",
+  "jsonFile": "./data/mp_EXTRACT.json",
   "typeKey": "sales_fact",
   "idKey": "pod_id"
 };
 
 // product ref
 var productRef = {
-  "srcFile": "./mp_prdc_ref.txt",
-  "jsonFile": "./mp_prdc_ref.json",
+  "srcFile": "./data/mp_prdc_ref.txt",
+  "jsonFile": "./data/mp_prdc_ref.json",
   "typeKey": "product",
   "idKey": "prdc_key"
 };
 
-var ref = storeRef;
+var ref = productRef;
 // var op = 'parse';
 //var op = 'replace';
 var op = 'db';
